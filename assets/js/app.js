@@ -4,8 +4,8 @@ var restaurantes = [
         "tipoLugar": "Club Nocturno de Música Electrónica",
         "direccion": "Calle de Durango 181, Roma Nte., 06700 Ciudad de México, CDMX",
         "coordenadas":{
-            "longitud": "19.4198484",
-            "latitud": "-99.1651271"
+            "longitud": "-99.165256",
+            "latitud": "19.420091"
         }
     },
     {
@@ -13,8 +13,8 @@ var restaurantes = [
         "tipoLugar": "Bar",
         "direccion": "Calle Versalles 64, Cuahutémoc, Juárez, 06600 Ciudad de México, CDMX",
         "coordenadas":{
-            "longitud": "19.4289383",
-            "latitud": "-99.157185"
+            "longitud": "-99.1550875",
+            "latitud": "19.4290281"
         }
     },
     {
@@ -22,8 +22,8 @@ var restaurantes = [
         "tipoLugar": "Club de Jazz y Bar con Atmósfera Retro",
         "direccion": "Calle Milán 14, Cuauhtémoc, Juárez, 06600 Ciudad de México, CDMX",
         "coordenadas":{
-            "longitud": "19.4307904",
-            "latitud": "-99.1586909"
+            "longitud": "19.4308017",
+            "latitud": "-99.1565298"
         }
     },
     {
@@ -31,8 +31,8 @@ var restaurantes = [
         "tipoLugar": "Sala de Baile",
         "direccion": "Calle Mérida 17, Cuauhtémoc, Roma Nte., 06700 Ciudad de México, CDMX",
         "coordenadas":{
-            "longitud": "19.4198484",
-            "latitud": "-99.1651271"
+            "longitud": "19.4238646",
+            "latitud": "-99.1588189"
         }
     },
 ];
@@ -55,6 +55,15 @@ var plantillaLugar =
     '</section>';
 
 
+
+$(document).ready(cargarPagina);
+
+function cargarPagina(){
+    obtenerUbicacion();
+    $(".lugar").click(cambiarUbicacion);
+}
+
+
 var obtenerUbicacion = function(e){
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition(mostrarUbicacion);
@@ -73,7 +82,7 @@ var mostrarUbicacion = function(posicion){
 
 function mostrarMapa(coordenadas) {
     var map = new google.maps.Map($("#map")[0],{
-        zoom: 17,
+        zoom: 18,
         center: coordenadas
     });
     var marker = new google.maps.Marker({
@@ -82,7 +91,21 @@ function mostrarMapa(coordenadas) {
     });
 }
 
-$(document).ready(obtenerUbicacion);
+function cambiarUbicacion(){
+    //atributo data: cambia atributos que no queremos que se vean...todos los atributos data inician con data-  , el valor que reciba va a ser un texto
+    var latitud = $(this).data("latitud");
+    var longitud = $(this).data("longitud");
+    
+    var coordenadas = {
+        lat: latitud,
+        lng: longitud
+    };
+    
+    mostrarMapa(coordenadas);
+}
+
+
+
 
 
 

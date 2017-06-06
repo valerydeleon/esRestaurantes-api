@@ -48,3 +48,7 @@ body{
 .cont-restauran  .texto .thin{
     font-weight: 100;
 }
+
+.lugar {
+	cursor: pointer;
+}

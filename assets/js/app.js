@@ -56,24 +56,24 @@ var plantillaLugar =
 
 
 //funcion para imprimir dentro del html los lugares
-var mostrarLugares = function(lugaresCool){ //lugaresCool es el objeto
-    var plantillaHTML = ""; //se crea una plantilla vacia para llenar con la plantilla hecha
-    lugaresCool.forEach(function(lugarCool){ //itera el objeto donde cada indice es el lugarCool
-        plantillaHTML += plantillaLugar.replace("__longitud__", lugarCool.longitud)
-            .replace("__latitud__", lugarCool.latitud)
-            .replace("__nombre__", lugarCool.nombre) //se le suma a la plantilla a imprimir la plantilla determinada, remplazando los valores 
-            .replace("__tipoLugar__", lugarCool.tipoLugar)
-            .replace("__direccion__", lugarCool.direccion);
-    });
-    $(".lugares").html(plantillaHTML);
-};
+//var mostrarLugares = function(lugaresCool){ //lugaresCool es el objeto
+//    var plantillaHTML = ""; //se crea una plantilla vacia para llenar con la plantilla hecha
+//    lugaresCool.forEach(function(lugarCool){ //itera el objeto donde cada indice es el lugarCool
+//        plantillaHTML += plantillaLugar.replace("__longitud__", lugarCool.longitud)
+//            .replace("__latitud__", lugarCool.latitud)
+//            .replace("__nombre__", lugarCool.nombre) //se le suma a la plantilla a imprimir la plantilla determinada, remplazando los valores 
+//            .replace("__tipoLugar__", lugarCool.tipoLugar)
+//            .replace("__direccion__", lugarCool.direccion);
+//    });
+//    $(".lugares").html(plantillaHTML);
+//};
 
 
 $(document).ready(cargarPagina);
 
 function cargarPagina(){
     obtenerUbicacion();
-    mostrarLugares(lugaresCool);
+//    mostrarLugares(lugaresCool);
     $(".lugar").click(cambiarUbicacion);
 }
 

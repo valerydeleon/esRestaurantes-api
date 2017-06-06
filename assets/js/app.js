@@ -1,4 +1,4 @@
-var restaurantes = [
+var lugaresCool = [
     {
         "nombre": "Club Social Rhodesia",
         "tipoLugar": "Club Nocturno de Música Electrónica",
@@ -44,7 +44,7 @@ var plantillaLugar =
             '<section class="col s12">' +
                 '<div class="cont-restauran z-depth-3">' +
                     '<img src="https://dummyimage.com/100x100/c2c2c2/fff.jpg&text=logo" alt="" class="circle" />' +
-                    '<div>' +
+                    '<div class="lugar" data-longitud="__longitud__" data-latitud="__latitud__">' +
                         '<h5 class="grey-text text-darken-3 title texto">__nombre__</h5>' +
                         '<h6 class="texto light-italic">__tipoLugar__</h6>' +
                         '<p class="texto thin ">Dirección: __direccion__</p>' +
@@ -55,11 +55,25 @@ var plantillaLugar =
     '</section>';
 
 
+//funcion para imprimir dentro del html los lugares
+var mostrarLugares = function(lugaresCool){ //lugaresCool es el objeto
+    var plantillaHTML = ""; //se crea una plantilla vacia para llenar con la plantilla hecha
+    lugaresCool.forEach(function(lugarCool){ //itera el objeto donde cada indice es el lugarCool
+        plantillaHTML += plantillaLugar.replace("__longitud__", lugarCool.longitud)
+            .replace("__latitud__", lugarCool.latitud)
+            .replace("__nombre__", lugarCool.nombre) //se le suma a la plantilla a imprimir la plantilla determinada, remplazando los valores 
+            .replace("__tipoLugar__", lugarCool.tipoLugar)
+            .replace("__direccion__", lugarCool.direccion);
+    });
+    $(".lugares").html(plantillaHTML);
+};
+
 
 $(document).ready(cargarPagina);
 
 function cargarPagina(){
     obtenerUbicacion();
+    mostrarLugares(lugaresCool);
     $(".lugar").click(cambiarUbicacion);
 }
 
@@ -103,8 +117,6 @@ function cambiarUbicacion(){
     
     mostrarMapa(coordenadas);
 }
-
-
 
 
 

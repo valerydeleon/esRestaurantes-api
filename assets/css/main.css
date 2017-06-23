@@ -1,11 +1,11 @@
 body{
-    background-color: #ff8a8a;
+    background-color: #363636;
 }
 
 .header {
     height: 100%;
     background-color: #324392;
-    color: #ff8a8a;
+    color: #ffffff;
 }
 
 #map {
